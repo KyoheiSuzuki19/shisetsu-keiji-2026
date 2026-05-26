@@ -71,12 +71,6 @@ items:
         value: 8点
     patient_note: お薬の有効成分名で処方する場合があります。
 
-  - id: kouhatsu
-    title: 外来後発医薬品使用体制加算
-    body: |
-      当院では、後発医薬品（ジェネリック）の使用を推進しております。
-    patient_note: 処方がある場合、お薬代の負担軽減が期待できることがあります。
-
   - id: ncd
     title: 臨床データベース（NCD）への参加
     body: |
