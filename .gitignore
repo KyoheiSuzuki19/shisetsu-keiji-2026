@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+
+# 一時ツール
+scripts/cloudflared.exe
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+desktop.ini
+.cursor/
+
+# ローカル設定（任意）
+.env

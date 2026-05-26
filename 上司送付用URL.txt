@@ -1,0 +1,21 @@
+【上司送付用】施設基準・算定点数 掲示（令和8年度改定）
+
+■ 4院まとめて見る（一覧）
+https://prague-diversity-fitness-fountain.trycloudflare.com/
+
+■ 湖北台診療所
+https://prague-diversity-fitness-fountain.trycloudflare.com/kohokudai/
+
+■ のがたクリニック
+https://prague-diversity-fitness-fountain.trycloudflare.com/nogata/
+
+■ みんなの血管外科池袋
+https://prague-diversity-fitness-fountain.trycloudflare.com/ikebukuro/
+
+■ 湯沢クリニック
+https://prague-diversity-fitness-fountain.trycloudflare.com/yuzawa/
+
+【ご注意】
+・このURLは確認用の一時公開です（このPCの電源・通信が切れると開けなくなります）。
+・URLを再発行する場合は scripts/start_public_urls.py を再実行してください。
+・本番掲載は各クリニック公式サイト（/shisetsu-kijun/）へアップロードしてください。

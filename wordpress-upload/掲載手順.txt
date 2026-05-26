@@ -1,0 +1,23 @@
+【WordPress / サーバーへの掲示ページ設置手順】
+
+お知らせに貼るURLは、各固定ページ公開後に有効になります。
+
+■ 各クリニックの掲示ページURL
+  みんなの血管外科池袋：https://ikebukuro.altry-med.or.jp/shisetsu-kijun/
+  湖北台診療所：https://kohokudai.altry-med.or.jp/shisetsu-kijun/
+  のがたクリニック：https://nogata.altry-med.or.jp/shisetsu-kijun/
+  湯沢クリニック：https://yuzawa-clinic.or.jp/shisetsu-kijun/
+
+■ 設置方法（どちらか）
+A) WordPress 固定ページ
+   1. 固定ページ → 新規 → タイトル「施設基準・算定点数に関するお知らせ」
+   2. スラッグを shisetsu-kijun に設定
+   3. カスタムHTMLブロックに wordpress-upload/（院名フォルダ）/本文.html を貼付
+   4. 公開
+
+B) FTP・ファイルマネージャ
+   wordpress-upload/（院名フォルダ）/index.html を
+   サーバーの /shisetsu-kijun/index.html として配置
+
+■ お知らせ投稿用テキスト
+   各院フォルダの「お知らせ/」内テキストをコピーしてください。

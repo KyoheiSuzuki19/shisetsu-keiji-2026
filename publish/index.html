@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>施設基準掲示｜公開URL一覧</title>
+  <style>
+    body { font-family: "Yu Gothic", Meiryo, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+    h1 { font-size: 1.35rem; color: #1e5a8e; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.95rem; }
+    th, td { border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+    th { background: #f3f4f6; padding: 0.5rem 0.75rem; }
+    .note { margin-top: 1.5rem; padding: 1rem; background: #eff6ff; border-left: 4px solid #2d7ab8; font-size: 0.9rem; }
+    code { background: #f3f4f6; padding: 0.1rem 0.35rem; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>施設基準・算定点数 掲示（Web公開用）</h1>
+  <p>各クリニックのホームページ掲載用URLです。<code>publish/</code> フォルダの HTML を各URLへアップロードしてください。</p>
+  <table>
+    <thead>
+      <tr><th>クリニック</th><th>公開URL（掲載先）</th><th>確認</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="py-3 pr-4 font-medium">みんなの血管外科池袋</td>
+        <td class="py-3 pr-4 break-all"><a href="https://ikebukuro.altry-med.or.jp/shisetsu-kijun/" class="text-blue-700 underline">https://ikebukuro.altry-med.or.jp/shisetsu-kijun/</a></td>
+        <td class="py-3"><a href="./ikebukuro/" class="text-blue-700 underline">アップロード前プレビュー</a></td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-4 font-medium">湖北台診療所</td>
+        <td class="py-3 pr-4 break-all"><a href="https://kohokudai.altry-med.or.jp/shisetsu-kijun/" class="text-blue-700 underline">https://kohokudai.altry-med.or.jp/shisetsu-kijun/</a></td>
+        <td class="py-3"><a href="./kohokudai/" class="text-blue-700 underline">アップロード前プレビュー</a></td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-4 font-medium">のがたクリニック</td>
+        <td class="py-3 pr-4 break-all"><a href="https://nogata.altry-med.or.jp/shisetsu-kijun/" class="text-blue-700 underline">https://nogata.altry-med.or.jp/shisetsu-kijun/</a></td>
+        <td class="py-3"><a href="./nogata/" class="text-blue-700 underline">アップロード前プレビュー</a></td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-4 font-medium">湯沢クリニック</td>
+        <td class="py-3 pr-4 break-all"><a href="https://yuzawa-clinic.or.jp/shisetsu-kijun/" class="text-blue-700 underline">https://yuzawa-clinic.or.jp/shisetsu-kijun/</a></td>
+        <td class="py-3"><a href="./yuzawa/" class="text-blue-700 underline">アップロード前プレビュー</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <p><strong>同一オフィス内で他PCからすぐ確認する場合</strong></p>
+    <p>PowerShell で <code>python scripts/serve_publish.py</code> を実行すると、<code>http://&lt;このPCのIP&gt;:8080/</code> から閲覧できます（アップロード前のプレビュー用）。</p>
+  </div>
+</body>
+</html>

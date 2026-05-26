@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Pages セットアップ手順</title>
+  <style>
+    body { font-family: "Yu Gothic", Meiryo, sans-serif; max-width: 44rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.75; color: #1a1a1a; }
+    h1 { font-size: 1.35rem; color: #1e5a8e; border-bottom: 3px solid #1e5a8e; padding-bottom: 0.4rem; }
+    h2 { font-size: 1.05rem; color: #1e5a8e; margin-top: 1.75rem; }
+    .box { background: #eff6ff; border-left: 4px solid #2d7ab8; padding: 1rem; margin: 1rem 0; font-size: 0.92rem; }
+    .warn { background: #fff8e1; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; font-size: 0.92rem; }
+    code, pre { background: #f3f4f6; font-size: 0.88rem; }
+    pre { padding: 1rem; overflow-x: auto; border-radius: 6px; }
+    ol { padding-left: 1.35rem; }
+    li { margin-bottom: 0.5rem; }
+    a { color: #2d7ab8; }
+  </style>
+</head>
+<body>
+  <h1>GitHub Pages で常設公開する手順</h1>
+  <p>完了すると、<strong>どのPC・スマホからでも</strong>掲示を開けます（このPCの電源は不要です）。</p>
+
+  <div class="box">
+    <p><strong>公開後のURLの形（例）</strong></p>
+    <p><code>https://あなたのGitHubID.github.io/shisetsu-keiji-2026/kohokudai/</code></p>
+  </div>
+
+  <h2>事前準備（初回のみ）</h2>
+  <ol>
+    <li><a href="https://github.com/signup" target="_blank" rel="noopener">GitHub</a> で無料アカウントを作成</li>
+    <li><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git for Windows</a> をインストール（未導入の場合）</li>
+  </ol>
+
+  <h2>手順1：GitHubにリポジトリを作る</h2>
+  <ol>
+    <li>GitHubにログイン → 右上「＋」→ <strong>New repository</strong></li>
+    <li>Repository name: <code>shisetsu-keiji-2026</code>（変更可。変更した場合は <code>data/hosting.yaml</code> も合わせる）</li>
+    <li>Public を選択 → <strong>Create repository</strong></li>
+  </ol>
+
+  <h2>手順2：GitHub Pages を有効化</h2>
+  <ol>
+    <li>作成したリポジトリ → <strong>Settings</strong> → 左メニュー <strong>Pages</strong></li>
+    <li>Source: <strong>GitHub Actions</strong> を選択（Deploy from branch ではない）</li>
+    <li>※ 初回 push 後、Actions が自動でデプロイします</li>
+  </ol>
+
+  <h2>手順3：PCからアップロード（push）</h2>
+  <p>PowerShell で、このフォルダ（院内掲示）を開いて実行します。<br>
+  <code>あなたのGitHubID</code> は自分のユーザー名に置き換えてください。</p>
+  <pre>cd "c:\Users\SUZUKI\Desktop\院内掲示"
+
+git init
+git add .
+git commit -m "施設基準掲示 令和8年度改定"
+git branch -M main
+git remote add origin https://github.com/あなたのGitHubID/shisetsu-keiji-2026.git
+git push -u origin main</pre>
+  <p>push 時に GitHub のログインを求められたら、ブラウザで認証します。</p>
+
+  <h2>手順4：公開URLを確定する</h2>
+  <ol>
+    <li><code>data/hosting.yaml</code> を開き、<code>github_user:</code> に GitHub のユーザー名を記入<br>
+      例: <code>github_user: suzuki-taro</code></li>
+    <li>PowerShell で再生成:
+      <pre>python scripts/generate.py</pre>
+    </li>
+    <li>GitHub → リポジトリ → <strong>Actions</strong> で緑のチェック（成功）を確認</li>
+    <li>Settings → Pages に表示された URL を開く（2〜3分かかることがあります）</li>
+    <li><code>GitHubPages-公開URL.html</code> に各院のリンクが出力されます</li>
+  </ol>
+
+  <h2>手順5：上司・関係者へ送る</h2>
+  <p><code>GitHubPages-公開URL.txt</code> のURLをメールやチャットに貼り付けて送付してください。</p>
+
+  <div class="warn">
+    <p><strong>注意</strong></p>
+    <ul>
+      <li>リポジトリが <strong>Public</strong> だと誰でもURLから閲覧できます（社内確認・上司確認向け）。</li>
+      <li>非公開にしたい場合は GitHub の有料プランが必要です。</li>
+      <li>文言を直したら <code>python scripts/generate.py</code> → <code>git add .</code> → <code>git commit</code> → <code>git push</code> で更新が反映されます。</li>
+    </ul>
+  </div>
+
+  <h2>掲示内容を更新するとき</h2>
+  <pre>python scripts/generate.py
+git add .
+git commit -m "掲示内容を更新"
+git push</pre>
+</body>
+</html>

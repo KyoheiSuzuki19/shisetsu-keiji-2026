@@ -1,0 +1,10 @@
+【GitHub Pages 常設URL】施設基準・算定点数 掲示
+
+一覧: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2025/
+
+みんなの血管外科池袋: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2025/ikebukuro/
+湖北台診療所: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2025/kohokudai/
+のがたクリニック: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2025/nogata/
+湯沢クリニック: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2025/yuzawa/
+
+※ data/hosting.yaml の github_user を設定し、GitHubへ push 後に有効になります。
