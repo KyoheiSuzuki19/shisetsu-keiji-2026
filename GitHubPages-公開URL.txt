@@ -1,10 +1,23 @@
-【GitHub Pages 常設URL】施設基準・算定点数 掲示
+【上司送付・プレビュー用】施設基準・算定点数 掲示（GitHub Pages）
 
-一覧: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/
+■ 4院まとめて見る（一覧）
+https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/
 
-みんなの血管外科池袋: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/ikebukuro/
-湖北台診療所: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/kohokudai/
-のがたクリニック: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/nogata/
-湯沢クリニック: https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/yuzawa/
+■ みんなの血管外科池袋
+https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/ikebukuro/
 
-※ data/hosting.yaml の github_user を設定し、GitHubへ push 後に有効になります。
+■ 湖北台診療所
+https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/kohokudai/
+
+■ のがたクリニック
+https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/nogata/
+
+■ 湯沢クリニック
+https://KyoheiSuzuki19.github.io/shisetsu-keiji-2026/yuzawa/
+
+【ご注意】
+・上記URLは GitHub Pages の常設プレビューです（push 後 1〜3分で反映）。
+・古い表示のときは Ctrl+F5 で強制再読み込みしてください。
+・フッターに「掲示データ更新」の日時が表示されます。NCDが無く8項目なら最新版です。
+・同一PC内の即時確認: python scripts/serve_publish.py → http://127.0.0.1:8080/ikebukuro/
+・本番掲載は各クリニック公式サイト（/shisetsu-kijun/）へアップロードしてください。

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import html
 import sys
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 try:
@@ -234,12 +235,17 @@ def web_html(clinic: dict) -> str:
     specs = "・".join(clinic.get("specialties", []))
     rev_label = esc(clinic.get("revision", "令和8年度（2026年）診療報酬改定"))
     page_url = signage_url(clinic)
+    jst = timezone(timedelta(hours=9))
+    built_at = datetime.now(jst).strftime("%Y-%m-%d %H:%M")
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>医療機関としての掲示事項｜{esc(clinic["name"])}</title>
   <meta name="description" content="{esc(clinic["name"])}の施設基準・算定点数に関する掲示事項です。">
   <link rel="canonical" href="{esc(page_url)}">
@@ -312,6 +318,7 @@ def web_html(clinic: dict) -> str:
 
   <footer class="max-w-3xl mx-auto px-4 py-8 text-center text-xs text-gray-500">
     <p>保険医療機関における施設基準等の届出に基づく掲示（{rev_label}）</p>
+    <p class="mt-1 text-gray-400">掲示データ更新：{built_at}（JST）</p>
     <p class="mt-2"><a href="{esc(clinic["web_url"])}" class="underline" style="color: var(--color-accent)">クリニック公式サイトへ</a></p>
   </footer>
 </body>
@@ -614,15 +621,26 @@ def github_pages_url_html(clinics: list[dict], base: str) -> str:
 def github_pages_url_txt(clinics: list[dict], base: str) -> str:
     base = base.rstrip("/") + "/"
     lines = [
-        "【GitHub Pages 常設URL】施設基準・算定点数 掲示",
+        "【上司送付・プレビュー用】施設基準・算定点数 掲示（GitHub Pages）",
         "",
-        f"一覧: {base}",
+        f"■ 4院まとめて見る（一覧）",
+        base,
         "",
     ]
     for c in clinics:
-        lines.append(f"{c['name']}: {base}{c['id']}/")
-    lines.append("")
-    lines.append("※ data/hosting.yaml の github_user を設定し、GitHubへ push 後に有効になります。")
+        lines.append(f"■ {c['name']}")
+        lines.append(f"{base}{c['id']}/")
+        lines.append("")
+    lines.extend(
+        [
+            "【ご注意】",
+            "・上記URLは GitHub Pages の常設プレビューです（push 後 1〜3分で反映）。",
+            "・古い表示のときは Ctrl+F5 で強制再読み込みしてください。",
+            "・フッターに「掲示データ更新」の日時が表示されます。NCDが無く8項目なら最新版です。",
+            "・同一PC内の即時確認: python scripts/serve_publish.py → http://127.0.0.1:8080/ikebukuro/",
+            "・本番掲載は各クリニック公式サイト（/shisetsu-kijun/）へアップロードしてください。",
+        ]
+    )
     return "\n".join(lines)
 
 
@@ -687,9 +705,15 @@ def main() -> None:
     if gh_base:
         gh_html = ROOT / "GitHubPages-公開URL.html"
         gh_txt = ROOT / "GitHubPages-公開URL.txt"
+        boss_txt = ROOT / "上司送付用URL.txt"
+        boss_html = ROOT / "上司送付用URL.html"
+        pages_txt = github_pages_url_txt(clinics, gh_base)
         gh_html.write_text(github_pages_url_html(clinics, gh_base), encoding="utf-8")
-        gh_txt.write_text(github_pages_url_txt(clinics, gh_base), encoding="utf-8")
+        gh_txt.write_text(pages_txt, encoding="utf-8")
+        boss_txt.write_text(pages_txt, encoding="utf-8")
+        boss_html.write_text(github_pages_url_html(clinics, gh_base), encoding="utf-8")
         print(f"Generated: {gh_html.relative_to(ROOT)}")
+        print(f"Generated: {boss_txt.relative_to(ROOT)}")
         print(f"GitHub Pages base: {gh_base}")
 
 
