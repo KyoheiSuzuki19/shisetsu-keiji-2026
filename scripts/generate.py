@@ -292,10 +292,6 @@ def web_html(clinic: dict) -> str:
       <p class="text-sm text-gray-600">TEL <a href="tel:{esc(clinic["phone"].replace("-", ""))}" class="underline" style="color: var(--color-accent)">{esc(clinic["phone"])}</a></p>
       <p class="text-sm mt-2">診療科目：{esc(specs)}</p>
       {revision.replace('class="revision-banner"', 'class="revision-banner text-sm font-semibold mt-2" style="color: var(--color-primary)"') if revision else ''}
-      <p class="mt-3 text-xs text-gray-600 break-all">
-        掲示ページURL：
-        <a href="{esc(page_url)}" class="underline font-medium" style="color: var(--color-accent)">{esc(page_url)}</a>
-      </p>
     </div>
   </header>
 
@@ -410,7 +406,6 @@ def web_body_fragment(clinic: dict) -> str:
     <p style="font-size:0.85rem;color:#666;margin:0.15rem 0">TEL <a href="tel:{esc(clinic["phone"].replace("-", ""))}" style="color:{theme["accent"]}">{esc(clinic["phone"])}</a></p>
     <p style="font-size:0.85rem;margin:0.25rem 0">診療科目：{esc(specs)}</p>
     {rev_html}
-    <p style="font-size:0.75rem;color:#666;margin-top:0.75rem;word-break:break-all">掲示ページURL：<a href="{esc(page_url)}" style="color:{theme["accent"]}">{esc(page_url)}</a></p>
   </header>
   {notes_html}
   <nav aria-label="掲示項目一覧" style="background:#fff;border:1px solid #e5e7eb;border-radius:0.5rem;padding:1rem;margin-bottom:1.5rem">
