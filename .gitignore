@@ -16,3 +16,6 @@ desktop.ini
 
 # ローカル設定（任意）
 .env
+
+# 生成物（ローカル検証用）
+_pdf_extract.txt
